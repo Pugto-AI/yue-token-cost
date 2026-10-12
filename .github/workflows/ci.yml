@@ -15,12 +15,15 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 11
-      - run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: |
+          set -x
+          pwd
+          node --version
+          pnpm --version
+          pnpm install --frozen-lockfile
       - run: npm test
       - run: node scripts/mcp-smoke.mjs
-        env:
-          # the smoke test spawns the server itself; keep stderr visible in the log
-          NODE_OPTIONS: --no-warnings
 
   bench:
     runs-on: ubuntu-latest
