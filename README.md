@@ -44,6 +44,9 @@ file instead: `{ "command": "node", "args": ["/abs/path/to/yue-token-cost/server
 
 ## Develop
 
+Needs Node ≥ 22 to install with pnpm 11 (pnpm itself imports `node:sqlite`); the published
+package declares and supports Node ≥ 20 at runtime.
+
 ```bash
 pnpm install
 npm test              # 18 unit + contract tests, no network

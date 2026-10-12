@@ -11,26 +11,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # pnpm 11 requires Node >= 22.13 (it imports node:sqlite).
+          # The published package itself still runs on Node >= 20.
+          node-version: '22'
       - uses: pnpm/action-setup@v4
         with:
           version: 11
-      - name: Install dependencies
-        run: |
-          set -x
-          pwd
-          node --version
-          command -v pnpm || echo "::error::pnpm is not on PATH"
-          pnpm --version || echo "::error::pnpm --version failed"
-          if ! pnpm install --frozen-lockfile > /tmp/pnpm-install.log 2>&1; then
-            tail -n 25 /tmp/pnpm-install.log
-            # Surface the reason as annotations too: job logs need repo access to read,
-            # annotations of a public repo do not.
-            while IFS= read -r line; do
-              echo "::error::${line//%/%25}"
-            done < <(tail -n 25 /tmp/pnpm-install.log)
-            exit 1
-          fi
+      - run: pnpm install --frozen-lockfile
       - run: npm test
       - run: node scripts/mcp-smoke.mjs
 
@@ -40,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - uses: pnpm/action-setup@v4
         with:
           version: 11
