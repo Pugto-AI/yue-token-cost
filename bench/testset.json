@@ -1,0 +1,54 @@
+{
+  "name": "yue-token-cost benchmark testset v0",
+  "note": "Each item is the same meaning expressed in four scripts. Content domain: Hong Kong labour/legal enquiries - the same domain as the author's existing projects. Sentences are hand-written, not machine-translated, so that script differences reflect real writing rather than translation artefacts.",
+  "items": [
+    {
+      "id": "annual-leave",
+      "label": "Paid annual leave entitlement",
+      "en": "How many days of paid annual leave am I entitled to?",
+      "zh_s": "我有多少天带薪年假？",
+      "zh_t": "我有多少天帶薪年假？",
+      "yue": "我有幾多日有薪年假？"
+    },
+    {
+      "id": "wage-arrears",
+      "label": "Wage arrears - employer unpaid for three months",
+      "en": "My employer has not paid my salary for three months. What can I do?",
+      "zh_s": "雇主已经三个月没有支付我的工资，我可以怎么办？",
+      "zh_t": "僱主已經三個月沒有支付我的工資，我可以怎麼辦？",
+      "yue": "老細已經三個月冇出糧，我可以點做？"
+    },
+    {
+      "id": "termination-notice",
+      "label": "Notice period before termination",
+      "en": "How much notice must my employer give before terminating my contract?",
+      "zh_s": "雇主终止合约前必须提前多久通知我？",
+      "zh_t": "僱主終止合約前必須提前多久通知我？",
+      "yue": "老細炒我之前要提早幾久通知我？"
+    },
+    {
+      "id": "sick-leave-cert",
+      "label": "Doctor's note for sick leave",
+      "en": "Do I need a doctor's note to take sick leave?",
+      "zh_s": "请病假需要医生证明吗？",
+      "zh_t": "請病假需要醫生證明嗎？",
+      "yue": "請病假使唔使醫生紙？"
+    },
+    {
+      "id": "holiday-pay",
+      "label": "Statutory holiday pay included in monthly salary",
+      "en": "Is statutory holiday pay included in my monthly salary?",
+      "zh_s": "法定假期薪酬是否已包含在月薪中？",
+      "zh_t": "法定假期薪酬是否已包含在月薪中？",
+      "yue": "法定假期嘅錢係咪已經包喺月薪入面？"
+    },
+    {
+      "id": "ordinance-clause",
+      "label": "Employment Ordinance wage-payment clause (formal register)",
+      "en": "Under the Employment Ordinance, an employer must pay wages within seven days after the end of the wage period.",
+      "zh_s": "根据《雇佣条例》，雇主必须在工资期届满后七天内支付工资。",
+      "zh_t": "根據《僱傭條例》，僱主必須在工資期屆滿後七天內支付工資。",
+      "yue": "根據《僱傭條例》，老細必須喺工資期完結之後七日內出糧。"
+    }
+  ]
+}

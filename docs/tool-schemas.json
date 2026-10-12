@@ -1,0 +1,153 @@
+{
+  "server": {
+    "name": "yue-token-cost",
+    "version": "0.1.0",
+    "transport": "stdio",
+    "description": "Measure token cost of Chinese/Cantonese text across scripts and tokenizers, with attribution for why the extra tokens exist."
+  },
+  "tools": [
+    {
+      "name": "count_tokens",
+      "description": "Count tokens, characters and UTF-8 bytes for a text under one tokenizer. Returns an estimated cost when usd_per_million is supplied. Use this for a single string; use compare_scripts to compare scripts.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string", "description": "The text to measure." },
+          "tokenizer": {
+            "type": "string",
+            "enum": ["o200k_base", "cl100k_base"],
+            "default": "o200k_base",
+            "description": "Tokenizer to measure with."
+          },
+          "usd_per_million": {
+            "type": "number",
+            "description": "Optional price per 1M tokens, in USD, to turn the count into an estimated cost."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "tokenizer": { "type": "string" },
+          "tokens": { "type": "integer" },
+          "chars": { "type": "integer" },
+          "bytes": { "type": "integer" },
+          "usd_estimate": { "type": ["number", "null"] }
+        },
+        "required": ["tokenizer", "tokens", "chars", "bytes", "usd_estimate"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "compare_scripts",
+      "description": "Compare the same meaning written in different scripts (e.g. English, 简体, 繁體, 粵語). Returns per-input counts, the delta against the cheapest input, and an attribution breakdown (half-character tokens, single-character tokens, multi-character tokens) explaining where the extra tokens come from.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "texts": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string", "description": "Short label, e.g. \"en\", \"zh_s\", \"zh_t\", \"yue\"." },
+                "text": { "type": "string" }
+              },
+              "required": ["label", "text"],
+              "additionalProperties": false
+            },
+            "description": "Two or more versions of the same meaning."
+          },
+          "tokenizers": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["o200k_base", "cl100k_base"] },
+            "default": ["o200k_base"],
+            "description": "Tokenizers to compare with. Results are reported per tokenizer and never averaged together."
+          }
+        },
+        "required": ["texts"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tokenizer": { "type": "string" },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": { "type": "string" },
+                      "tokens": { "type": "integer" },
+                      "chars": { "type": "integer" },
+                      "bytes": { "type": "integer" },
+                      "delta_vs_cheapest_pct": { "type": "number" },
+                      "partial_char_tokens": { "type": "integer" },
+                      "single_cjk_tokens": { "type": "integer" },
+                      "multi_cjk_tokens": { "type": "integer" },
+                      "explanation": { "type": "string" }
+                    },
+                    "required": ["label", "tokens", "chars", "bytes", "delta_vs_cheapest_pct", "partial_char_tokens", "single_cjk_tokens", "multi_cjk_tokens", "explanation"],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": ["tokenizer", "rows"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["results"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "explain_split",
+      "description": "Show exactly how a text is split into tokens: token ids, raw bytes, decoded pieces, and flags for half-characters (a Chinese character split across two tokens), digit splitting, and leading-space variants. Use this to answer \"why is this string expensive\".",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "tokenizer": {
+            "type": "string",
+            "enum": ["o200k_base", "cl100k_base"],
+            "default": "o200k_base"
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "tokenizer": { "type": "string" },
+          "tokens": { "type": "integer" },
+          "pieces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": { "type": "integer" },
+                "id": { "type": "integer" },
+                "bytes": { "type": "string", "description": "Raw bytes of this token, hex." },
+                "decoded": { "type": "string", "description": "Decoded text; empty when the token is a partial character." },
+                "partial": { "type": "boolean", "description": "True when the bytes are not a whole UTF-8 character." }
+              },
+              "required": ["index", "id", "bytes", "decoded", "partial"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["tokenizer", "tokens", "pieces"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

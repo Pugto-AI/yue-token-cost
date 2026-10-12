@@ -1,0 +1,35 @@
+name: release
+
+# Publishing is interactive-2FA or trusted-publishing (OIDC) only: npm no longer accepts
+# 2FA-bypass tokens for publishes. This workflow uses OIDC, so no NPM_TOKEN secret exists.
+#
+# One-time setup on npmjs.com: package -> Settings -> Trusted Publisher -> GitHub Actions,
+# with this repository and the workflow filename below.
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - run: pnpm install --frozen-lockfile
+      - run: npm test
+      - run: npm run smoke
+      - run: npm run bench
+      - run: npm publish --provenance --access public

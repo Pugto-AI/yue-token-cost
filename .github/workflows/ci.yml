@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - run: pnpm install --frozen-lockfile
+      - run: npm test
+      - run: node scripts/mcp-smoke.mjs
+        env:
+          # the smoke test spawns the server itself; keep stderr visible in the log
+          NODE_OPTIONS: --no-warnings
+
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pnpm install --frozen-lockfile
+      # Exact pin: the benchmark is a published contract, a tokenizer version change is a decision.
+      - run: pip install tiktoken==0.14.0
+      # BENCHMARK.md must equal what the Python generator produces right now.
+      - run: python bench/generate_benchmark.py
+      - run: git diff --exit-code BENCHMARK.md
+      # The committed baseline must still be what Python produces.
+      - run: python bench/make_baseline.py --check
+      # Node must agree with the Python baseline, row by row.
+      - run: node bench/reproduce.mjs

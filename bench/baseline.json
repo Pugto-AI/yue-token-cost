@@ -1,0 +1,397 @@
+{
+  "generated_by": "bench/make_baseline.py",
+  "tiktoken": "0.14.0",
+  "testset": "bench/testset.json",
+  "scripts": [
+    "en",
+    "zh_s",
+    "zh_t",
+    "yue"
+  ],
+  "tokenizers": [
+    "o200k_base",
+    "cl100k_base"
+  ],
+  "rows": [
+    {
+      "item": "annual-leave",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 12,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "annual-leave",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 12
+    },
+    {
+      "item": "annual-leave",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 9,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 7,
+      "multi_cjk_tokens": 1
+    },
+    {
+      "item": "annual-leave",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 14
+    },
+    {
+      "item": "annual-leave",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 9,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 7,
+      "multi_cjk_tokens": 1
+    },
+    {
+      "item": "annual-leave",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 14
+    },
+    {
+      "item": "annual-leave",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 11,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 8,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "annual-leave",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 14
+    },
+    {
+      "item": "wage-arrears",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 16,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "wage-arrears",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 16
+    },
+    {
+      "item": "wage-arrears",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 14,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 2,
+      "multi_cjk_tokens": 8
+    },
+    {
+      "item": "wage-arrears",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 22
+    },
+    {
+      "item": "wage-arrears",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 19,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 11,
+      "multi_cjk_tokens": 4
+    },
+    {
+      "item": "wage-arrears",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 30
+    },
+    {
+      "item": "wage-arrears",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 17,
+      "partial_char_tokens": 4,
+      "single_cjk_tokens": 10,
+      "multi_cjk_tokens": 1
+    },
+    {
+      "item": "wage-arrears",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 25
+    },
+    {
+      "item": "termination-notice",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 12,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "termination-notice",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 12
+    },
+    {
+      "item": "termination-notice",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 14,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 7,
+      "multi_cjk_tokens": 4
+    },
+    {
+      "item": "termination-notice",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 21
+    },
+    {
+      "item": "termination-notice",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 15,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 9,
+      "multi_cjk_tokens": 3
+    },
+    {
+      "item": "termination-notice",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 22
+    },
+    {
+      "item": "termination-notice",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 14,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 9,
+      "multi_cjk_tokens": 2
+    },
+    {
+      "item": "termination-notice",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 21
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 11,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 12
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 8,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 4,
+      "multi_cjk_tokens": 3
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 15
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 10,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 8,
+      "multi_cjk_tokens": 1
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 20
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 11,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 8,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "sick-leave-cert",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 19
+    },
+    {
+      "item": "holiday-pay",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 10,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "holiday-pay",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 10
+    },
+    {
+      "item": "holiday-pay",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 15,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 10,
+      "multi_cjk_tokens": 2
+    },
+    {
+      "item": "holiday-pay",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 22
+    },
+    {
+      "item": "holiday-pay",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 15,
+      "partial_char_tokens": 2,
+      "single_cjk_tokens": 10,
+      "multi_cjk_tokens": 2
+    },
+    {
+      "item": "holiday-pay",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 22
+    },
+    {
+      "item": "holiday-pay",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 20,
+      "partial_char_tokens": 6,
+      "single_cjk_tokens": 13,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "holiday-pay",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 29
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "en",
+      "tokenizer": "o200k_base",
+      "tokens": 22,
+      "partial_char_tokens": 0,
+      "single_cjk_tokens": 0,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "en",
+      "tokenizer": "cl100k_base",
+      "tokens": 22
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "zh_s",
+      "tokenizer": "o200k_base",
+      "tokens": 23,
+      "partial_char_tokens": 4,
+      "single_cjk_tokens": 10,
+      "multi_cjk_tokens": 6
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "zh_s",
+      "tokenizer": "cl100k_base",
+      "tokens": 34
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "zh_t",
+      "tokenizer": "o200k_base",
+      "tokens": 30,
+      "partial_char_tokens": 8,
+      "single_cjk_tokens": 18,
+      "multi_cjk_tokens": 1
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "zh_t",
+      "tokenizer": "cl100k_base",
+      "tokens": 41
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "yue",
+      "tokenizer": "o200k_base",
+      "tokens": 30,
+      "partial_char_tokens": 8,
+      "single_cjk_tokens": 19,
+      "multi_cjk_tokens": 0
+    },
+    {
+      "item": "ordinance-clause",
+      "script": "yue",
+      "tokenizer": "cl100k_base",
+      "tokens": 42
+    }
+  ],
+  "totals": {
+    "o200k_base": {
+      "en": 83,
+      "zh_s": 83,
+      "zh_t": 98,
+      "yue": 103
+    },
+    "cl100k_base": {
+      "en": 84,
+      "zh_s": 128,
+      "zh_t": 149,
+      "yue": 150
+    }
+  },
+  "partial_totals_o200k": {
+    "en": 0,
+    "zh_s": 10,
+    "zh_t": 14,
+    "yue": 24
+  }
+}

@@ -1,0 +1,9 @@
+- insert:
+    - id: yue-token-cost-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: yue-token-cost
+        transport: stdio
+        command: npx
+        args: ['-y', 'yue-token-cost']
+        failOnStartupError: true

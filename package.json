@@ -1,0 +1,45 @@
+{
+  "name": "yue-token-cost",
+  "version": "0.1.0",
+  "description": "Measure what Chinese/Cantonese actually costs in tokens - and why.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "yue-token-cost": "bin/yue-token-cost.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "server.mjs",
+    "cordis.patch.yml",
+    "README.md",
+    "BENCHMARK.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node scripts/mcp-smoke.mjs",
+    "bench": "node bench/reproduce.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "tokenizer",
+    "tiktoken",
+    "cantonese",
+    "chinese",
+    "token-cost",
+    "dsh-plugin"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "js-tiktoken": "^1.0.21",
+    "zod": "^4.0.0"
+  }
+}
