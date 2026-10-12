@@ -21,7 +21,15 @@ jobs:
           pwd
           node --version
           pnpm --version
-          pnpm install --frozen-lockfile
+          if ! pnpm install --frozen-lockfile > /tmp/pnpm-install.log 2>&1; then
+            tail -n 25 /tmp/pnpm-install.log
+            # Surface the reason as annotations too: job logs need repo access to read,
+            # annotations are readable by anyone for a public repo.
+            while IFS= read -r line; do
+              echo "::error::${line//%/%25}"
+            done < <(tail -n 25 /tmp/pnpm-install.log)
+            exit 1
+          fi
       - run: npm test
       - run: node scripts/mcp-smoke.mjs
 
