@@ -20,11 +20,12 @@ jobs:
           set -x
           pwd
           node --version
-          pnpm --version
+          command -v pnpm || echo "::error::pnpm is not on PATH"
+          pnpm --version || echo "::error::pnpm --version failed"
           if ! pnpm install --frozen-lockfile > /tmp/pnpm-install.log 2>&1; then
             tail -n 25 /tmp/pnpm-install.log
             # Surface the reason as annotations too: job logs need repo access to read,
-            # annotations are readable by anyone for a public repo.
+            # annotations of a public repo do not.
             while IFS= read -r line; do
               echo "::error::${line//%/%25}"
             done < <(tail -n 25 /tmp/pnpm-install.log)
