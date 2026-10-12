@@ -42,6 +42,14 @@ dsh plugin add yue-token-cost
 If `npx` is unavailable (offline machine, or a pinned checkout), point the client at the entry
 file instead: `{ "command": "node", "args": ["/abs/path/to/yue-token-cost/server.mjs"] }`.
 
+Before the first npm release, install straight from GitHub (no registry needed):
+
+```bash
+npx -y --allow-git=all github:Pugto-AI/yue-token-cost
+```
+
+Some npm configurations block git dependencies by default; `--allow-git=all` lifts that.
+
 ## Develop
 
 Needs Node ≥ 22 to install with pnpm 11 (pnpm itself imports `node:sqlite`); the published
