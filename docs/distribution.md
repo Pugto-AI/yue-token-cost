@@ -41,6 +41,15 @@ What follows for positioning:
 | Reddit / HN | "Chinese costs more tokens than English - here is the measured matrix" | Numbers-first titles only; the tool is the footnote |
 | HK dev / AI meetups | 5-minute demo on one's own prompt | Local credibility is a real advantage here |
 
+## Listing copy (one entry, reuse everywhere)
+
+> yue-token-cost - measure what Chinese/Cantonese actually costs in tokens, and why. Compares scripts
+> side by side (English / 简体 / 繁體 / 粵語) and attributes the extra tokens (half-character splits
+> vs vocabulary coverage), backed by a reproducible benchmark cross-checked against Python `tiktoken`.
+> Local MCP server: no network, no telemetry. MIT.
+
+Install line: `npx -y yue-token-cost` (or `github:Pugto-AI/yue-token-cost` before the first release).
+
 ## Rules
 
 - Do not claim demand that has not been measured. This project's own selling point is that it
