@@ -42,5 +42,7 @@ jobs:
       - run: git diff --exit-code BENCHMARK.md
       # The committed baseline must still be what Python produces.
       - run: python bench/make_baseline.py --check
+      # Vocabulary composition - the numbers the launch posts quote for *why* the gap exists.
+      - run: python bench/vocab_stats.py
       # Node must agree with the Python baseline, row by row.
       - run: node bench/reproduce.mjs
