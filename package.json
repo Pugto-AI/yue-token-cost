@@ -16,6 +16,7 @@
     "server.mjs",
     "cordis.patch.yml",
     "README.md",
+    "README.zh.md",
     "BENCHMARK.md"
   ],
   "dsh": {

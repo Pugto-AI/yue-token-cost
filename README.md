@@ -1,5 +1,7 @@
 # yue-token-cost
 
+**English** | [中文](./README.zh.md)
+
 **Measure what Chinese/Cantonese actually costs in tokens — and why.**
 
 MCP server + DSH plugin. No GPU, no data, no model training: deterministic text measurement only.
