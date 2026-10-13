@@ -117,6 +117,8 @@ pip install tiktoken && python bench/generate_benchmark.py
 
 README 里每个数字都出自那个文件。范围与诚实的说明（覆盖了哪些 tokenizer、为什么比值不是普适常数、为什么保留简体/繁體完全相同的那一条）写在文件末尾。
 
+其他 tokenizer 家族单独测量：[`docs/deepseek-tokenizer.md`](./docs/deepseek-tokenizer.md) —— DeepSeek V3/V4 的同一测试集结果，以及为什么 V3→V4 不改变你的 token 账单。
+
 ## 路线图
 
 - **v1** —— 上面 3 个工具、`o200k_base` + `cl100k_base`、npm + DSH bundle、测试、生成的基准表。

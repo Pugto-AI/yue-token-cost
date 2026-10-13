@@ -11,6 +11,7 @@ anyone who copies them. So the benchmark is generated, never hand-edited, and CI
 | `baseline.json` | The Python numbers, committed. The Node side asserts against this file. |
 | `reproduce.mjs` | Node + `js-tiktoken` → asserts every row equals `baseline.json`. |
 | `vocab_stats.py` | Vocabulary composition of `o200k_base` (105,898 English word pieces vs 7,532 Chinese-containing tokens) - the numbers the launch posts quote for *why* the gap exists. CI runs it; drift fails loudly. |
+| `hf_tokenizer_stats.py` | Same testset against an arbitrary HuggingFace `tokenizer.json` (e.g. DeepSeek). Manual, not CI: it needs `tokenizers` and a file from outside the repo. Results are recorded in [`../docs/deepseek-tokenizer.md`](../docs/deepseek-tokenizer.md). |
 
 Why the baseline comes from Python: the shipped tool is Node, the generator is Python. Two
 independent implementations of the same tokenizer are the only real cross-check available; a

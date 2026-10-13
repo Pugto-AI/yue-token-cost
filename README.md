@@ -122,6 +122,8 @@ pip install tiktoken && python bench/generate_benchmark.py
 
 Every number in the README comes from that file. Scope and honesty notes (which tokenizers are covered, why ratios are not universal constants, why identical 简体/繁體 items are kept) are at the bottom of it.
 
+Other tokenizer families are measured separately: [`docs/deepseek-tokenizer.md`](./docs/deepseek-tokenizer.md) — the same testset on DeepSeek V3/V4, and why V3→V4 does not change your per-token bill.
+
 ## Roadmap
 
 - **v1** — 3 tools above, `o200k_base` + `cl100k_base`, npm + DSH bundle, tests, generated benchmark.
