@@ -50,6 +50,25 @@ npx -y --allow-git=all github:Pugto-AI/yue-token-cost
 
 Some npm configurations block git dependencies by default; `--allow-git=all` lifts that.
 
+## Verified
+
+Every claim here is checkable. What has actually been run, and how:
+
+| Check | Command | What it proves |
+|---|---|---|
+| Unit + contract tests | `npm test` | 18 tests: attribution boundaries (half-character, digit splitting, leading space), schema strictness, determinism |
+| End-to-end over stdio | `npm run smoke` | 9 checks driving `server.mjs` with the official MCP client: tool list, strict-schema rejection, `structuredContent` mirroring |
+| Benchmark contract | `npm run bench` | 48 rows match the Python `tiktoken` baseline row by row - Node and Python are two independent implementations |
+| Vocabulary numbers | `python bench/vocab_stats.py` | 200,019 / 105,898 / 7,532 - the figures the launch posts quote for *why* the gap exists |
+| DSH's own MCP client | `node scripts/dsh-e2e.mjs --target github` (needs `DSH_CHECKOUT`) | DSH's stdio transport factory spawns the server through `npx` and completes all three tools (4/4) |
+| Packed tarball | `npm pack`, then `dsh plugin add <tgz>` in an isolated `DSH_HOME` | The published file set is complete: the bundle composes `mcp-client(serverName: yue-token-cost)` |
+
+CI runs the first four on every push (two jobs, Node 22).
+
+**Not yet verified**: `npx -y yue-token-cost`. The npm package is not published yet, so the shipped
+bundle's exact argument string has not been exercised; `--target github` is the same mechanism with a
+different string.
+
 ## Develop
 
 Needs Node ≥ 22 to install with pnpm 11 (pnpm itself imports `node:sqlite`); the published

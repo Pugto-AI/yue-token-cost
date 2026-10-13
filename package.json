@@ -26,7 +26,8 @@
   "scripts": {
     "test": "node --test",
     "smoke": "node scripts/mcp-smoke.mjs",
-    "bench": "node bench/reproduce.mjs"
+    "bench": "node bench/reproduce.mjs",
+    "e2e:dsh": "node scripts/dsh-e2e.mjs"
   },
   "keywords": [
     "mcp",
