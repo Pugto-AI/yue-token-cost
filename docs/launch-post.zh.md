@@ -34,6 +34,8 @@
 
 **工具**：`yue-token-cost` —— 一个本地 MCP 工具（不联网、不上传任何文字），三个功能：数 token 与成本、四种书写系统并排对比、逐 token 拆分并标出"半个字"。
 
+它**不比价格**（价格会变），比的是书写系统，以及多出来的 token 到底从哪来。
+
 ```
 npx -y --allow-git=all github:Pugto-AI/yue-token-cost
 ```
