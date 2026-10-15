@@ -3,3 +3,4 @@ node_modules/
 .tmp-dsh-smoke/
 __pycache__/
 .DS_Store
+.npmrc
