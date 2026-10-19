@@ -6,9 +6,9 @@
 
 MCP server + DSH plugin. No GPU, no data, no model training: deterministic text measurement only.
 
-> Status: **v0.1.0, implemented and verified locally.** 18 tests + 9 stdio smoke checks + a
-> Node-vs-Python benchmark cross-check (48 rows) all pass; the DSH bundle composes in an isolated
-> profile. Not yet published to npm.
+> Status: **v0.1.0, published to npm.** `npx -y yue-token-cost` works today; 18 tests + 9 stdio
+> smoke checks + a Node-vs-Python benchmark cross-check (48 rows) pass, and DSH's own MCP client
+> spawns the published package and completes all three tools (4/4).
 
 ## Why
 
@@ -62,14 +62,15 @@ Every claim here is checkable. What has actually been run, and how:
 | End-to-end over stdio | `npm run smoke` | 9 checks driving `server.mjs` with the official MCP client: tool list, strict-schema rejection, `structuredContent` mirroring |
 | Benchmark contract | `npm run bench` | 48 rows match the Python `tiktoken` baseline row by row - Node and Python are two independent implementations |
 | Vocabulary numbers | `python bench/vocab_stats.py` | 200,019 / 105,898 / 7,532 - the figures the launch posts quote for *why* the gap exists |
-| DSH's own MCP client | `node scripts/dsh-e2e.mjs --target github` (needs `DSH_CHECKOUT`) | DSH's stdio transport factory spawns the server through `npx` and completes all three tools (4/4) |
+| DSH's own MCP client | `node scripts/dsh-e2e.mjs --target npm` (needs `DSH_CHECKOUT`) | DSH's stdio transport factory spawns the server through `npx` and completes all three tools (4/4) |
 | Packed tarball | `npm pack`, then `dsh plugin add <tgz>` in an isolated `DSH_HOME` | The published file set is complete: the bundle composes `mcp-client(serverName: yue-token-cost)` |
+| The published package | `npx -y yue-token-cost --version` | Registry install works: exit 0, stdout empty, `0.1.0` on stderr |
 
 CI runs the first four on every push (two jobs, Node 22).
 
-**Not yet verified**: `npx -y yue-token-cost`. The npm package is not published yet, so the shipped
-bundle's exact argument string has not been exercised; `--target github` is the same mechanism with a
-different string.
+Two npm details worth knowing: the registry also carries a `0.0.0-stage` entry — that is npm's
+name-reservation placeholder for staged publishing, not a failed release; `latest` points at `0.1.0`. A first
+publish of a new name goes through that staging flow and becomes live a few seconds later.
 
 ## Develop
 

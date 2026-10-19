@@ -6,7 +6,7 @@
 
 MCP server + DSH 插件。不需要 GPU、不需要语料、不训练模型：只做确定性的文本测量。
 
-> 状态：**v0.1.0，已实现并在本地验证。** 18 个测试 + 9 项 stdio 端到端检查 + Node 与 Python 的基准逐行交叉验证（48 行）全部通过；DSH bundle 已在隔离 profile 中完成装配。尚未发布到 npm。
+> 状态：**v0.1.0，已发布到 npm。** `npx -y yue-token-cost` 现在就能用；18 个测试 + 9 项 stdio 端到端检查 + Node 与 Python 的基准逐行交叉验证（48 行）全部通过，DSH 自己的 MCP 客户端也已拉起发布版并调通三个工具（4/4）。
 
 ## 为什么需要它
 
@@ -60,12 +60,13 @@ npx -y --allow-git=all github:Pugto-AI/yue-token-cost
 | stdio 端到端 | `npm run smoke` | 9 项检查，用官方 MCP client 真实驱动 `server.mjs`：工具列表、严格 schema 拒绝未声明字段、`structuredContent` 与文本镜像 |
 | 基准契约 | `npm run bench` | 48 行与 Python `tiktoken` 基线逐行一致 —— Node 与 Python 是两套独立实现 |
 | 词表数字 | `python bench/vocab_stats.py` | 200,019 / 105,898 / 7,532 —— 发布帖里解释"为什么贵"用的数字 |
-| DSH 自己的 MCP 客户端 | `node scripts/dsh-e2e.mjs --target github`（需要 `DSH_CHECKOUT`） | 用 DSH 的 stdio transport 工厂通过 `npx` 拉起 server，三个工具全部调通（4/4） |
+| DSH 自己的 MCP 客户端 | `node scripts/dsh-e2e.mjs --target npm`（需要 `DSH_CHECKOUT`） | 用 DSH 的 stdio transport 工厂通过 `npx` 拉起 server，三个工具全部调通（4/4） |
 | 打包后的 tarball | `npm pack`，再在隔离的 `DSH_HOME` 里 `dsh plugin add <tgz>` | 发布文件集是完整的：bundle 能装配出 `mcp-client(serverName: yue-token-cost)` |
+| **发布出去的包** | `npx -y yue-token-cost --version` | 从注册表安装可用：exit 0、stdout 为空、stderr 打印 `0.1.0` |
 
 CI 每次 push 跑前四项（两个 job，Node 22）。
 
-**尚未验证**：`npx -y yue-token-cost`。npm 包还没发布，所以 bundle 里那个确切的参数字符串还没被真正执行过；`--target github` 是同一套机制、不同的字符串。
+两个 npm 细节值得知道：注册表里还有一个 `0.0.0-stage` 条目 —— 那是 npm 为新包名占位的 staged publishing 占位版，不是发布失败；`latest` 指向 `0.1.0`。新包名首次发布走这个暂存流程，几秒后正式生效。
 
 ## 开发
 
