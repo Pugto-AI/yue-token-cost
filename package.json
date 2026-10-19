@@ -2,6 +2,14 @@
   "name": "yue-token-cost",
   "version": "0.1.0",
   "description": "Measure what Chinese/Cantonese actually costs in tokens - and why.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pugto-AI/yue-token-cost.git"
+  },
+  "homepage": "https://github.com/Pugto-AI/yue-token-cost#readme",
+  "bugs": {
+    "url": "https://github.com/Pugto-AI/yue-token-cost/issues"
+  },
   "type": "module",
   "license": "MIT",
   "engines": {
